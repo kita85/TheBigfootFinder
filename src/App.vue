@@ -1,15 +1,19 @@
-<template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<template lang="pug">
+  BigfootMap
+  .card
+    .card-header Testing Bootstrap
+    .card-body
+      fa(:icon="['far', 'circle']")
+      h1.small Init core packages
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import BigfootMap from './components/BigfootMap.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    BigfootMap
   }
 }
 </script>
