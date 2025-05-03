@@ -9,7 +9,8 @@ module.exports = defineConfig({
         new webpack.DefinePlugin({
           'process.env': {
             VERSION: JSON.stringify(require('./package.json').version)
-          }
+          },
+          __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: 'false',
         })
       ]
     }

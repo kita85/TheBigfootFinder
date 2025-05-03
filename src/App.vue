@@ -1,30 +1,46 @@
 <template lang="pug">
-  BigfootMap
-  .card
-    .card-header Testing Bootstrap
-    .card-body
-      fa(:icon="['far', 'circle']")
-      h1.small Init core packages
+div
+  InfoBox
+  .row.m-0
+    .col.col-md.p-0.fixed-width(:class="[openSidebar ? 'fixed-width-175' : 'fixed-width-75']")
+      MainSidebar(@toggleSidebar="toggleSidebar")
+    .col.col-md
+      router-view
 </template>
 
 <script>
-import BigfootMap from './components/BigfootMap.vue'
+import InfoBox from './components/InfoBox.vue'
+import BigfootMap from './components/Map/BigfootMap.vue'
+import MainSidebar from './components/MainSidebar.vue'
 
 export default {
   name: 'App',
   components: {
-    BigfootMap
+    InfoBox,
+    BigfootMap,
+    MainSidebar
+  },
+  data() {
+    return {
+      openSidebar: false
+    }
+  },
+  methods: {
+    toggleSidebar (e) {
+      this.openSidebar = e
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.fixed-width {
+  transition: .4s all;
+}
+.fixed-width-75 {
+  max-width: 75px!important;
+}
+.fixed-width-175 {
+  max-width: 175px!important;
 }
 </style>

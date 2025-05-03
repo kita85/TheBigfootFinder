@@ -3,11 +3,42 @@ import { library as FontAwesomeLibrary } from '@fortawesome/fontawesome-svg-core
 
 // Regular Icons
 import {
-    faCircle
+    faCalendar,
+    faCircle,
+    faMap,
+
 } from '@fortawesome/free-regular-svg-icons'
 
+// Solid Icons
+import {
+    faCircle as fasCircle,
+    faCartShopping as fasCartShopping,
+    faBars as fasBars,
+    faNewspaper as fasNewspaper,
+    faMagnifyingGlassChart as fasMagnifyingGlassChart,
+    faHouse as fasHouse,
+    faCircleInfo as fasCircleInfo,
+    faArrowRight as fasArrowRight,
+    faArrowLeft as fasArrowLeft
+} from '@fortawesome/free-solid-svg-icons'
+
+// Regular
 FontAwesomeLibrary.add(
-    faCircle
+    faCircle,
+    faMap,
+    faCalendar
 )
 
+// Solid
+FontAwesomeLibrary.add(
+    fasCircle,
+    fasCartShopping,
+    fasBars,
+    fasNewspaper,
+    fasMagnifyingGlassChart,
+    fasHouse,
+    fasCircleInfo,
+    fasArrowRight,
+    fasArrowLeft
+)
 export { FontAwesomeIcon }
