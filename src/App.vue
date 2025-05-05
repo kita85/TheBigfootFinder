@@ -1,14 +1,17 @@
 <template lang="pug">
 div
-  InfoBox
+  //- InfoBox
+  TopNav
   .row.m-0
     .col.col-md.p-0.fixed-width(:class="[openSidebar ? 'fixed-width-175' : 'fixed-width-75']")
       MainSidebar(@toggleSidebar="toggleSidebar")
-    .col.col-md
-      router-view
+    .col.col-md.p-0
+      div.router-container
+        router-view
 </template>
 
 <script>
+import TopNav from './components/TopNav.vue'
 import InfoBox from './components/InfoBox.vue'
 import BigfootMap from './components/Map/BigfootMap.vue'
 import MainSidebar from './components/MainSidebar.vue'
@@ -16,6 +19,7 @@ import MainSidebar from './components/MainSidebar.vue'
 export default {
   name: 'App',
   components: {
+    TopNav,
     InfoBox,
     BigfootMap,
     MainSidebar
@@ -42,5 +46,8 @@ export default {
 }
 .fixed-width-175 {
   max-width: 175px!important;
+}
+.router-container {
+  background-color: rgb(244 244 244);
 }
 </style>

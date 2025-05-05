@@ -1,5 +1,40 @@
 @import '~bootstrap/scss/bootstrap.scss';
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+html, body {
+  font-family: 'Roboto', sans-serif;
+//   font-family: "Crimson Text", serif;
+}
+p {
+    margin-top: 0;
+    // margin-bottom: 1rem;
+    // font-size: 16px;
+    // line-height: 120%;
+    letter-spacing: -.02em;
+}
+hr {
+    color: #8a8a8a;
+}
 .card {
-    // background-color: red;
+    border-radius: 0!important;
+    border: 1px solid rgb(240, 240, 240)!important;
+    margin: 20px 0px;
+}
+.card-header {
+    background-color:white!important;
+    border-bottom: 0!important;
+    padding: 25px 35px 0 35px!important;
+}
+.card-body {
+    padding: 0 35px 25px 35px!important;
+}
+.chart-title {
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    // font-family: "Lora", serif;
+    color: #1b1c2b;
+}
+.btn-primary {
+    background-color: #1f77b4;
 }

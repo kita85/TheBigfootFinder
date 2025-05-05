@@ -56,9 +56,11 @@ export default {
 <style scoped>
 #main-sidebar {
     max-width: 100%;
-    height: 100vh;
-    padding: 10px;
+    height: 100%;
+    min-height: 100vh;
+    padding: 10px 5px;
     background-color: #292a38;
+    background-color: #1b1c2b;
     font-size: 16px;
     color: white;
 }

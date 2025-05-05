@@ -1,9 +1,7 @@
-import { createStore } from 'vuex'
-import { sightingData } from './modules/sightingData'
-
 export const defaultState = () => {
     return {
         // data goes here
+        
     }
 }
 
@@ -21,12 +19,10 @@ const getters = {
 
 }
 
-export const store = createStore({
+export const moduleTemplate = {
+    namespaced: true,
     state,
-    actions,
-    mutations,
     getters,
-    modules: {
-        sightingData
-    }
-})
+    actions,
+    mutations
+}

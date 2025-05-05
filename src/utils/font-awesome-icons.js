@@ -22,6 +22,14 @@ import {
     faArrowLeft as fasArrowLeft
 } from '@fortawesome/free-solid-svg-icons'
 
+// Brand Icons
+import {
+    faFacebook as fabFacebook,
+    faInstagram as fabInstagram,
+    faYoutube as fabYoutube
+
+} from '@fortawesome/free-brands-svg-icons'
+
 // Regular
 FontAwesomeLibrary.add(
     faCircle,
@@ -40,5 +48,12 @@ FontAwesomeLibrary.add(
     fasCircleInfo,
     fasArrowRight,
     fasArrowLeft
+)
+
+// Brands
+FontAwesomeLibrary.add(
+    fabFacebook,
+    fabInstagram,
+    fabYoutube
 )
 export { FontAwesomeIcon }
