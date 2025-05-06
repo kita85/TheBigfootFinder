@@ -1,7 +1,7 @@
 <template lang="pug">
     div#info-box
         fa.me-2(:icon="['fas', 'info-circle']")
-        | Info Box
+        | {{msg}}
 </template>
 
 <script>

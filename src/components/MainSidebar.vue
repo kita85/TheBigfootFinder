@@ -15,17 +15,17 @@ div#main-sidebar(:class="[openSidebar ? 'active' : '']")
         fa(:icon="['fas', 'magnifying-glass-chart']")
         span.ms-2.small Data
 
-    router-link.nav-link(to="/shop") 
-        fa(:icon="['fas', 'cart-shopping']")
-        span.ms-2.small Shop
+    //- router-link.nav-link(to="/shop") 
+    //-     fa(:icon="['fas', 'cart-shopping']")
+    //-     span.ms-2.small Shop
 
-    router-link.nav-link(to="/events")
-        fa(:icon="['far', 'calendar']")
-        span.ms-2.small Events
+    //- router-link.nav-link(to="/events")
+    //-     fa(:icon="['far', 'calendar']")
+    //-     span.ms-2.small Events
 
-    router-link.nav-link(to="/news")
-        fa(:icon="['fas', 'newspaper']")
-        span.ms-2.small News
+    //- router-link.nav-link(to="/news")
+    //-     fa(:icon="['fas', 'newspaper']")
+    //-     span.ms-2.small News
     
 </template>
     
@@ -57,7 +57,7 @@ export default {
 #main-sidebar {
     max-width: 100%;
     height: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 115px);
     padding: 10px 5px;
     background-color: #292a38;
     background-color: #1b1c2b;

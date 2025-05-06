@@ -6,6 +6,10 @@ import {
     faCalendar,
     faCircle,
     faMap,
+    faThumbsDown,
+    faThumbsUp,
+    faClock,
+    faStar
 
 } from '@fortawesome/free-regular-svg-icons'
 
@@ -19,7 +23,12 @@ import {
     faHouse as fasHouse,
     faCircleInfo as fasCircleInfo,
     faArrowRight as fasArrowRight,
-    faArrowLeft as fasArrowLeft
+    faArrowLeft as fasArrowLeft,
+    faXmark as fasXmark,
+    faStar as fasStar,
+    faClock as fasClock,
+    faStarHalfStroke as fasStarHalfStroke,
+    faTemperatureHalf as fasTemperatureHalf
 } from '@fortawesome/free-solid-svg-icons'
 
 // Brand Icons
@@ -34,7 +43,11 @@ import {
 FontAwesomeLibrary.add(
     faCircle,
     faMap,
-    faCalendar
+    faCalendar,
+    faThumbsDown,
+    faThumbsUp,
+    faClock,
+    faStar
 )
 
 // Solid
@@ -47,7 +60,12 @@ FontAwesomeLibrary.add(
     fasHouse,
     fasCircleInfo,
     fasArrowRight,
-    fasArrowLeft
+    fasArrowLeft,
+    fasXmark,
+    fasStar,
+    fasStarHalfStroke,
+    fasTemperatureHalf,
+    fasClock
 )
 
 // Brands
