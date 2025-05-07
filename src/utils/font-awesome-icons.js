@@ -28,7 +28,15 @@ import {
     faStar as fasStar,
     faClock as fasClock,
     faStarHalfStroke as fasStarHalfStroke,
-    faTemperatureHalf as fasTemperatureHalf
+    faTemperatureHalf as fasTemperatureHalf,
+    faMoon as fasMoon,
+    faWind as fasWind,
+    faCloudRain as fasCloudRain,
+    faCloud as fasCloud,
+    faDroplet as fasDroplet,
+    faSun as fasSun,
+    faGem as fasGem,
+    faEye as fasEye
 } from '@fortawesome/free-solid-svg-icons'
 
 // Brand Icons
@@ -65,7 +73,15 @@ FontAwesomeLibrary.add(
     fasStar,
     fasStarHalfStroke,
     fasTemperatureHalf,
-    fasClock
+    fasClock,
+    fasMoon,
+    fasWind,
+    fasCloudRain,
+    fasCloud,
+    fasDroplet,
+    fasSun,
+    fasGem,
+    fasEye
 )
 
 // Brands

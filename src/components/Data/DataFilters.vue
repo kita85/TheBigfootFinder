@@ -66,7 +66,7 @@ export default {
     },
     getYearList () {
         this.yearList = []
-        for(let i=2025; i > 1869; i--) {
+        for(let i=2018; i > 1869; i--) {
             this.yearList.push(i)
         }
     }

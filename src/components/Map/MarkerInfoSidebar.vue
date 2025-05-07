@@ -1,7 +1,7 @@
 <template lang="pug">
 div#marker-info-sidebar(:class="[openMarkerSidebar ? 'active' : '']")
-    .marker-info-sidebar-content
-        div(v-if="selectedMarkerDetails")
+    .marker-info-sidebar-content(v-if="selectedMarkerDetails")
+        .marker-info-sidebar-content-fixed
             div.mb-4
                 .d-flex
                     .me-auto
@@ -9,10 +9,11 @@ div#marker-info-sidebar(:class="[openMarkerSidebar ? 'active' : '']")
                     div
                         div.p-1(@click="closeMarkerSidebar()")
                             fa(:icon="['fas', 'xmark']")
-                p.subtitle.small {{selectedMarkerDetails.latitude}}, {{selectedMarkerDetails.longitude}}
-                    span.color-highlight &nbsp; {{selectedMarkerDetails.state}}
-                //- p.solid-bg-white {{formatDateTime(selectedMarkerDetails.timestamp)}}
-            br
+                p.subtitle.small
+                    span.color-highlight {{selectedMarkerDetails.county}}, {{selectedMarkerDetails.state}}
+                //-  {{selectedMarkerDetails.latitude}}, {{selectedMarkerDetails.longitude}}
+
+        .marker-info-sidebar-content-scroll
             div.mb-4
                 .row
                     .col-md.border-right
@@ -39,12 +40,121 @@ div#marker-info-sidebar(:class="[openMarkerSidebar ? 'active' : '']")
 
             div.mb-4
                 p.section-title Weather
-                p.solid-bg-white 
-                    fa.me-2(:icon="['fas', 'temperature-half']") 
-                    | TBD
+                .solid-bg-white 
+                    div.mb-3
+                        p.section-title-2
+                            fa.me-2(:icon="['far', 'circle']") 
+                            span Overview: 
+                        p {{selectedMarkerDetails.summary}}
+                .solid-bg-white.mt-2
+                    div
+                        p.section-title-2
+                            fa.me-2(:icon="['fas', 'temperature-half']") 
+                            span Temperature
+                        .row.mt-3
+                            .col-md 
+                                p.section-title-3 Low: 
+                                p.display-1-3 {{(selectedMarkerDetails.temperature_low).toFixed()}}&#8457;
+                            .col-md 
+                                p.section-title-3 Mid: 
+                                p.display-1-3 {{(selectedMarkerDetails.temperature_mid).toFixed()}}&#8457;
+                            .col-md 
+                                p.section-title-3 High: 
+                                p.display-1-3 {{(selectedMarkerDetails.temperature_high).toFixed()}}&#8457;
+                .row.m-0
+                    .col-md.ps-0.pe-1
+                        .solid-bg-white.mt-2
+                            div
+                                p.section-title-2
+                                    fa.me-2(:icon="['fas', 'moon']") 
+                                    span.section-title-2 Moon Phase:
+                                p.display-1-5 {{selectedMarkerDetails.moon_phase}}
+                    .col-md.pe-0.ps-1
+                        .solid-bg-white.mt-2
+                            div
+                                p.section-title-2
+                                    fa.me-2(:icon="['fas', 'cloud']") 
+                                    span Cloud Cover:
+                                p.display-1-5 {{selectedMarkerDetails.cloud_cover * 100}}%
+                .solid-bg-white.mt-2
+                    div
+                        p.section-title-2
+                            fa.me-2(:icon="['fas', 'wind']") 
+                            span Wind
+                        .row.mt-3
+                            .col-md
+                                p.section-title-3 Direction: 
+                                p {{selectedMarkerDetails.wind_bearing}} NNW
+                            .col-md
+                                p.section-title-3 Speed: 
+                                p {{selectedMarkerDetails.wind_speed}} MPH
+                .solid-bg-white.mt-2
+                    div.mb-3
+                        p.section-title-2
+                            fa.me-2(:icon="['fas', 'cloud-rain']") 
+                            span Precipitation
+                        .row.mt-3
+                            .col-md
+                                p.section-title-3 Type: 
+                                p {{selectedMarkerDetails.precip_type || 'None'}}
+                            .col-md
+                                p.section-title-3 Probability: 
+                                p {{selectedMarkerDetails.precip_probability * 100}}%
+                            .col-md
+                                p.section-title-3 Intensity: 
+                                p {{selectedMarkerDetails.precip_intensity}}
+
+                .row.m-0
+                    .col-md.ps-0.pe-1
+                        .solid-bg-white.mt-2
+                            div.mb-3
+                                p.section-title-2
+                                    fa.me-2(:icon="['fas', 'temperature-half']") 
+                                    span  Dew Point: 
+                                p.display-1-5 {{(selectedMarkerDetails.dew_point).toFixed()}}&#8457;
+                    .col-md.pe-0.ps-1
+                        .solid-bg-white.mt-2
+                            div.mb-3
+                                p.section-title-2
+                                    fa.me-2(:icon="['fas', 'droplet']") 
+                                    span  Humidity: 
+                                p.display-1-5 {{selectedMarkerDetails.humidity * 100}}% 
+
+                .row.m-0
+                    .col-md.ps-0.pe-1 
+                        .solid-bg-white.mt-2
+                            div.mb-3
+                                p.section-title-2
+                                    fa.me-2(:icon="['fas', 'gem']") 
+                                    span  Pressure: 
+                                p.display-1-5 {{selectedMarkerDetails.pressure}}
+                    .col-md.pe-0.ps-1
+                        .solid-bg-white.mt-2
+                            div.mb-3
+                                p.section-title-2
+                                    fa.me-2(:icon="['fas', 'sun']") 
+                                    span  UV Index: 
+                                p.display-1-5 {{selectedMarkerDetails.uv_index}}&nbsp;
+                                    span(v-if="selectedMarkerDetails.uv_index >= 6") High
+                                    span(v-if="selectedMarkerDetails.uv_index <= 3 && selectedMarkerDetails.uv_index >= 5") Moderate
+                                    span(v-if="selectedMarkerDetails.uv_index <= 2") Low
+                .row.m-0
+                    .col-md.ps-0.pe-1 
+                        .solid-bg-white.mt-2
+                            div.mb-3
+                                p.section-title-2
+                                    fa.me-2(:icon="['fas', 'eye']") 
+                                    span  Visibility: 
+                                p.display-1-5 {{selectedMarkerDetails.visibility}} miles
+                    .col-md.pe-0.ps-1
+                        .solid-bg-white.mt-2
+                            div.mb-3
+                                p.section-title-2
+                                    fa.me-2(:icon="['far', 'circle']") 
+                                    span Season: 
+                                p.display-1-5 {{selectedMarkerDetails.season}}
 
     .marker-info-sidebar-bg
-
 </template>
 
 <script>
@@ -92,14 +202,14 @@ export default {
     z-index: 99999;
     position: absolute;
     height: calc(100% - 70px);
-    width: 350px;
-    padding: 25px;
+    width: 375px;
     margin: 50px 10px;
     border-radius: 10px;
     background-color: rgba(255, 255, 255, 0.9);
     border: 1px solid #fff;
     bottom: -9999px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.27);
+    padding-bottom: 110px;
     transition: .3s all;
 }
 #marker-info-sidebar.active {
@@ -108,6 +218,15 @@ export default {
 .marker-info-sidebar-content {
     position: relative;
     z-index: 10;
+    height: 100%;
+}
+.marker-info-sidebar-content-scroll {
+    overflow: scroll;
+    height: 100%;
+    padding: 25px 25px 0 25px;
+}
+.marker-info-sidebar-content-fixed {
+    padding: 25px 25px 0 25px;
 }
 .marker-info-sidebar-bg {
     height: 100%;
@@ -141,6 +260,30 @@ export default {
 }
 .fa-star {
     color: #f2c235;
+}
+.solid-bg-white div.mb-3 {
+    /* border-bottom: 1px solid #ededed; */
+    /* padding: 10px 0; */
+}
+.section-title-2 {
+    color: #818181;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: .5px;
+}
+.section-title-3 {
+    padding: 0px;
+    margin: 0px;
+    color: #3e6885;
+}
+.display-1-3 {
+    font-size: 1.3rem;
+}
+.display-1-5 {
+    font-size: 1.5rem;
+}
+.display-1-5 .small {
+    font-size: 16px!important;
 }
 </style>
     
