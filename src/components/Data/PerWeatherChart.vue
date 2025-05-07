@@ -6,9 +6,9 @@
                 p.chart-title Average Weather Conditions
                 hr
     .card-body  
-        p Temperature:
-        p Conditions:
-        p Moon Phase:
+        p Temperature: TBD
+        p Conditions: TBD
+        p Moon Phase: TBD
 
 </template>
 

@@ -1,4 +1,4 @@
-import jsonData from '../../assets/data.json'
+import jsonData from '../../assets/data/bigfootReports.json'
 import moment from 'moment'
 
 export const defaultState = () => {

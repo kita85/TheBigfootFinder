@@ -18,20 +18,24 @@ div.p-4
 
 <script>
 import moment from 'moment'
-import jsonData from '../../assets/data.json'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Top10Sightings',
   components: {},
   props: {},
+  computed: {
+    ...mapGetters({
+        sightingData: 'sightingData/filteredSightingData'
+    })
+  },
   data() {
       return {
-        data: jsonData,
         reducedData: null
       }
   },
   mounted() {
-    this.reducedData = this.data.slice(0, 10)
+    this.reducedData = this.sightingData.slice(0, 10)
   },
   methods: {
     formatDateTime (e) {
