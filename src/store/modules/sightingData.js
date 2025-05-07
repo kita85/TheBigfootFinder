@@ -6,6 +6,7 @@ export const defaultState = () => {
         // data goes here
         sightingData: jsonData,
         filteredSightingData: jsonData,
+        filteredSightingMap: jsonData,
         sightingLocationList: []
     }
 }
@@ -14,7 +15,6 @@ const state = defaultState()
 
 const mutations = {
     filterSightings (state, payload) {
-        console.log(payload)
         state.filteredSightingData = state.sightingData.filter(item => 
             // (payload.start_date ? item.start_date === payload.timestamp : true) &&
             // (payload.end_date ? item.end_date === payload.timestamp : true) &&
@@ -22,7 +22,12 @@ const mutations = {
             (payload.state ? item.state === payload.state : true) &&
             (payload.classification ? item.classification === payload.classification : true)
         )
-        console.log(state.filteredSightingData)
+    },
+    filterMapData (state, payload) {
+        state.filteredSightingMap = state.sightingData.filter(item => 
+            (payload.year ? moment(item.timestamp).format('YYYY') == payload.year : true) &&
+            (payload.classification ? item.classification === payload.classification : true)
+        )
     },
     setSightingLocationList (state) {
         state.sightingLocationList = [...new Set(state.sightingData.map(item => item.state))]
@@ -39,6 +44,9 @@ const getters = {
     },
     filteredSightingData (state) {
         return state.filteredSightingData
+    },
+    filteredSightingMap (state) {
+        return state.filteredSightingMap
     },
     sightingLocationList (state) {
         return state.sightingLocationList

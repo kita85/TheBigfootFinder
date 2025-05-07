@@ -1,11 +1,21 @@
 <template lang="pug">
 #bff-map-view
-    MarkerInfoSidebar(@toggleMarkerSidebar="toggleMarkerSidebar" :openMarkerSidebar="openMarkerSidebar" :selectedMarkerDetails="selectedMarkerDetails")
+    MarkerInfoSidebar(
+        @toggleMarkerSidebar="toggleMarkerSidebar" 
+        :openMarkerSidebar="openMarkerSidebar" 
+        :selectedMarkerDetails="selectedMarkerDetails")
     .row.m-0
         .col.col-md.p-0
-            BigfootMap(@toggleMarkerSidebar="toggleMarkerSidebar" @updateSelectedMarkerDetails="updateSelectedMarkerDetails")
+            BigfootMap(
+                @toggleMarkerSidebar="toggleMarkerSidebar" 
+                @updateSelectedMarkerDetails="updateSelectedMarkerDetails" 
+                :markerRadius="markerRadius"
+                :showProbability="showProbability")
         .col.col-md-4.fixed-width(:class="[openSidebar ? 'fixed-width-350' : 'fixed-width-50']")
-            MapSidebar(@toggleSidebar="toggleSidebar")
+            MapSidebar(
+                @toggleSidebar="toggleSidebar"
+                @toggleProbability="toggleProbability" 
+                @updateMarkerRadius="updateMarkerRadius")
 </template>
     
 <script>
@@ -27,7 +37,9 @@ export default {
       return {
         openSidebar: true,
         openMarkerSidebar: false,
-        selectedMarkerDetails: null
+        selectedMarkerDetails: null,
+        markerRadius: 100000,
+        showProbability: true
       }
   },
   methods: {
@@ -37,9 +49,15 @@ export default {
     toggleMarkerSidebar (e) {
       this.openMarkerSidebar = e
     },
+    toggleProbability (e) {
+        this.showProbability = e
+    },
     updateSelectedMarkerDetails (e) {
         this.selectedMarkerDetails = e
-    }
+    },
+    updateMarkerRadius (e) {
+        this.markerRadius = e
+    },
   }
 }
 </script>

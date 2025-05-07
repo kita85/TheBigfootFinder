@@ -1,17 +1,17 @@
 <template lang="pug">
-InfoBox(:msg="'Geo Message | You have a '+probability+'% of seeing a Bigfoot based on your current location.'")
+InfoBox(v-if="showProbability" :msg="'Geo Message | You have a '+probability+'% of seeing a Bigfoot based on your current location.'")
 div#bigfoot-map
     LMap(ref="map" :zoom="zoom" :center="center")
         LTileLayer(url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" layer-type="base" name="OpenStreetMap")
         LMarkerClusterGroup
-            LMarker(v-for="sighting in data" :lat-lng="[sighting.latitude, sighting.longitude]" @click="openMarkerSidebar(sighting)")
+            LMarker(v-for="sighting in sightingData" :lat-lng="[sighting.latitude, sighting.longitude]" @click="openMarkerSidebar(sighting)")
                 LTooltip(:options="{ permanent: false, interactive: true }")
                     p {{ sighting.title}}
-        LLayerGroup(ref="draggableGroup")
+        LLayerGroup(ref="draggableGroup" v-if="showProbability")
             LMarker(:lat-lng="center" :options="{draggable: true}" @dragend="onDragEnd")
                 LTooltip(:options="{ permanent: true, interactive: true }")
                     p Drag Me
-            LCircle(:lat-lng="markerLatLng" :options="{draggable: true, radius: radius, color: 'red', fillColor: 'red', fillOpacity: 0.2,}")
+            LCircle(ref="circle" :lat-lng="markerLatLng" :options="circleOptions")
 </template>
   
 <script>
@@ -19,7 +19,7 @@ div#bigfoot-map
 import L from 'leaflet'
 import { LMap, LTileLayer, LMarker, LTooltip, LCircle, LLayerGroup, LControl } from "@vue-leaflet/vue-leaflet"
 import { LMarkerClusterGroup } from 'vue-leaflet-markercluster'
-import jsonData from '../../assets/data.json'
+import { mapGetters } from 'vuex'
 import InfoBox from '../InfoBox.vue'
 import "leaflet/dist/leaflet.css";
 import 'vue-leaflet-markercluster/dist/style.css'
@@ -39,23 +39,35 @@ export default {
         LMarkerClusterGroup
     },
     props: {
-        msg: String
+        markerRadius: Number,
+        showProbability: Boolean
     },
     data() {
         return {
             zoom: 7,
             center: [35.94948834268201, -84.07370444784684],
-            data: jsonData,
             markerLatLng: [35.94948834268201, -84.07370444784684],
             nearbyMarkers: [],
-            radius: 100000,
             randomChance: 0.0000000715, //Chances of winning the lottery
-            probability: 0
+            probability: 0,
+            circleOptions: {
+                draggable: true,
+                radius: 0,
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.2
+            }
         }
+    },
+    computed: {
+        ...mapGetters({
+            sightingData: 'sightingData/filteredSightingMap'
+        })
     },
     mounted() {
         this.getNearbyMarkers()
         this.getChangeOfSighting()
+        this.circleOptions.radius = this.markerRadius
     },
     methods: {
         onDragEnd(e) {
@@ -88,14 +100,14 @@ export default {
         },
         getNearbyMarkers () {
             let latLng = []
-            for(let i=0; i <= this.data.length; i++) {
+            for(let i=0; i <= this.sightingData.length; i++) {
                 // make sure data exists first to prevent errors
-                if (this.data[i] && this.data[i].latitude) {
+                if (this.sightingData[i] && this.sightingData[i].latitude) {
                     // format latLng
-                    latLng = [this.data[i].latitude, this.data[i].longitude]
+                    latLng = [this.sightingData[i].latitude, this.sightingData[i].longitude]
                     // if distance is less than the radius from the marker
-                    if (this.getDistance(this.markerLatLng,latLng) < this.radius) {
-                        this.nearbyMarkers.push(this.data[i])
+                    if (this.getDistance(this.markerLatLng,latLng) < this.markerRadius) {
+                        this.nearbyMarkers.push(this.sightingData[i])
                     }  
                 }
             }
@@ -110,8 +122,8 @@ export default {
         }
     },
     watch: {
-        data () {
-            // this.getNearbyMarkers()
+        markerRadius () {
+            this.$refs.circle.leafletObject.setRadius(this.markerRadius)
         }
   }
 }
