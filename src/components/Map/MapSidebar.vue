@@ -6,9 +6,9 @@
     div#map-sidebar
         p.section-title Location Search
         div.form-floating.mt-2.mb-2
-            input.form-control(type="text" placeholder="Search address")
+            input.form-control(type="text" placeholder="Search address" v-model="selectedAddress")
             label Address
-        //- button.btn.btn-primary Search
+        button.btn.btn-primary(@click="getAddressInfo()") Search
 
         hr.mt-4.mb-4
         p.section-title Probability
@@ -55,7 +55,8 @@ export default {
           radius: 10, // * 10,000 to make it worth it. Radius is in meters
           showProbability: true,
           selectedYear: null,
-          selectedClass: null
+          selectedClass: null,
+          selectedAddress: null
       }
   },
   mounted() {
@@ -84,6 +85,11 @@ export default {
     filterMap () {
         const selectedData = {year: this.selectedYear, classification: this.selectedClass}
         this.$store.commit('sightingData/filterMapData', selectedData)
+    },
+    getAddressInfo () {
+        // query = '8445 Walbrook Dr Knoxville, TN'
+        // query = '32 Hayfield Rd Knoxville, TN'
+        this.$store.dispatch('map/requestAddressInfo', this.selectedAddress)
     }
   }
 }

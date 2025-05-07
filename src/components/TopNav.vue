@@ -2,10 +2,8 @@
 div#top-nav.p-3
     .d-flex
         .me-auto.p-0
-            //- fa(:icon="['fas', 'circle']")
-            //- span.ps-2 Bigfoot Finder
             img(src="../assets/bff.jpeg")
-        .p-0
+        .social.p-0
             fa.me-3(:icon="['fab', 'facebook']")
             fa.me-3(:icon="['fab', 'instagram']")
             fa.me-3(:icon="['fab', 'youtube']")
@@ -44,6 +42,10 @@ export default {
 }
 img {
     max-width: 100px;
+}
+#top-nav .social {
+    font-size: 1.3rem;
+    margin-top: 10px;   
 }
 </style>
     

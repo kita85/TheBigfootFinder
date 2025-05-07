@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import { sightingData } from './modules/sightingData'
+import { map } from './modules/map'
 
 export const defaultState = () => {
     return {
@@ -27,6 +28,7 @@ export const store = createStore({
     mutations,
     getters,
     modules: {
-        sightingData
+        sightingData,
+        map
     }
 })

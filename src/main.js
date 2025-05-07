@@ -2,7 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { store } from './store'
-// import { service } from './services'
+import { service } from './services'
 import 'bootstrap'
 
 // Fontawesome Icons
@@ -17,6 +17,7 @@ import './assets/global.scss'
 
 createApp(App)
     .use(store)
+    .use(service)
     .use(router)
     .component('fa', FontAwesomeIcon)
     .mount('#app')

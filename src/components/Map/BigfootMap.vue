@@ -8,7 +8,7 @@ div#bigfoot-map
                 LTooltip(:options="{ permanent: false, interactive: true }")
                     p {{ sighting.title}}
         LLayerGroup(ref="draggableGroup" v-if="showProbability")
-            LMarker(:lat-lng="center" :options="{draggable: true}" @dragend="onDragEnd")
+            LMarker(:lat-lng="markerLatLng" :options="{draggable: true}" @dragend="onDragEnd")
                 LTooltip(:options="{ permanent: true, interactive: true }")
                     p Drag Me
             LCircle(ref="circle" :lat-lng="markerLatLng" :options="circleOptions")
@@ -61,7 +61,8 @@ export default {
     },
     computed: {
         ...mapGetters({
-            sightingData: 'sightingData/filteredSightingMap'
+            sightingData: 'sightingData/filteredSightingMap',
+            addressInfo: 'map/getAddressInfo'
         })
     },
     mounted() {
@@ -124,6 +125,10 @@ export default {
     watch: {
         markerRadius () {
             this.$refs.circle.leafletObject.setRadius(this.markerRadius)
+        },
+        addressInfo () {
+            console.log('addressInfo', this.addressInfo)
+            this.markerLatLng = [this.addressInfo[0].lat, this.addressInfo[0].lon]
         }
   }
 }
