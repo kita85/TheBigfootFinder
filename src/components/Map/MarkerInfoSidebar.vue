@@ -83,7 +83,7 @@ div#marker-info-sidebar(:class="[openMarkerSidebar ? 'active' : '']")
                         .row.mt-3
                             .col-md
                                 p.section-title-3 Direction: 
-                                p {{selectedMarkerDetails.wind_bearing}} NNW
+                                p {{selectedMarkerDetails.wind_bearing}} {{getWindDirection(selectedMarkerDetails.wind_bearing)}}
                             .col-md
                                 p.section-title-3 Speed: 
                                 p {{selectedMarkerDetails.wind_speed}} MPH
@@ -158,9 +158,11 @@ div#marker-info-sidebar(:class="[openMarkerSidebar ? 'active' : '']")
 
 <script>
 import moment from 'moment'
+import getWindDirection from '../../mixins/getWindDirection'
 
 export default {
   name: 'MarkerInfoSidebar',
+  mixins: [getWindDirection],
   emits: ['toggleMarkerSidebar'],
   components: {},
   props: {

@@ -23,16 +23,18 @@
                 p Pressure: {{bestConditions.pressure}}
                 p UV Index: {{bestConditions.uv_index}}
                 p Visibility: {{bestConditions.visibility}} miles
-                p Wind Bearing: {{bestConditions.wind_bearing}} NNW
+                p Wind Bearing: {{bestConditions.wind_bearing}}  {{getWindDirection(selectedMarkerDetails.wind_bearing)}}
                 p Wind Speed: {{bestConditions.wind_speed}} mph
 
 </template>
 
 <script>
 import { mapGetters } from 'vuex'
+import getWindDirection from '../../mixins/getWindDirection'
 
 export default {
   name: 'WeatherTable',
+  mixins: [getWindDirection],
   components: {},
   props: {},
   computed: {
