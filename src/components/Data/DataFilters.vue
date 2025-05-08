@@ -1,10 +1,6 @@
 <template lang="pug">
 div DataFilters
 .row
-    //- .col-md
-    //-     div.form-floating
-    //-         input#form-year.form-control(type="number" v-model="form.year") 
-    //-         label(for="form-year") Year
     .col-md
         div.form-floating
             select#form-year.form-select(v-model="form.year")
@@ -42,13 +38,12 @@ export default {
   },
   computed: {
     ...mapGetters({
-        sightingLocationList: 'sightingData/sightingLocationList'
+        sightingLocationList: 'sightingData/sightingLocationList',
+        yearList: 'sightingData/getYearList'
     })
   },
   data() {
       return {
-          // data here
-          yearList: [],
           form: {
             year: null,
             state: null,
@@ -58,17 +53,10 @@ export default {
   },
   mounted() {
     this.$store.commit('sightingData/setSightingLocationList')
-    this.getYearList()
   },
   methods: {
     submitForm () {
         this.$store.commit('sightingData/filterSightings', this.form)
-    },
-    getYearList () {
-        this.yearList = []
-        for(let i=2018; i > 1869; i--) {
-            this.yearList.push(i)
-        }
     }
   }
 }

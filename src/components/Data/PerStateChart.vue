@@ -10,9 +10,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import Plotly from 'plotly.js-dist'
+import sortGroupedObjects from '../../mixins/sortGroupedObjects'
 
 export default {
   name: 'PerStateChart',
+  mixins: [sortGroupedObjects],
   components: {},
   props: {},
   computed: {
@@ -27,9 +29,7 @@ export default {
             y: [],
             type: 'bar'
         }],
-        chartLayout: {
-            // title: {text: 'Sightings per location'},
-        },
+        chartLayout: {},
         chartConfig: {responsive: true}
       }
   },
@@ -37,22 +37,15 @@ export default {
    this.renderChart();
  },
  methods: {
-    groupBy(arr, property) {
-        return arr.reduce(function (memo, x) {
-            if (!memo[x[property]]) { memo[x[property]] = [] }
-            memo[x[property]].push(x)
-            return memo
-        }, {})
-    },
     renderData() {
         const result = Object.groupBy(this.sightingData, e => e.state)
-        const ordered = Object.keys(result).sort().reduce(
-            (obj, key) => { 
-                obj[key] = result[key]
-                return obj
-            }, 
-            {}
-        )
+        
+        // We don't need undefined values at this time
+        delete result[null]
+        delete result['Unknown']
+
+        // Sort data
+        const ordered = this.sortGroupedObjects(result)
 
         // Clear previous values
         this.chartData[0].x = []

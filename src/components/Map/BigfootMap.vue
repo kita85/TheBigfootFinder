@@ -114,11 +114,11 @@ export default {
             }
         },
         getChangeOfSighting() {
-            //If location radius has sightings, do probability math. Otherwise, it is random change.
+            // If location radius has sightings, do probability math. Otherwise, it is random change.
             if (this.nearbyMarkers.length != 0) {
                 this.probability = this.randomChance * this.nearbyMarkers.length
             } else {
-                this.probability = this.randomChance //Never an absolute 0 chance of seeing Bigfoot!
+                this.probability = this.randomChance // Never an absolute 0 chance of seeing Bigfoot!
             }
         }
     },
@@ -127,7 +127,6 @@ export default {
             this.$refs.circle.leafletObject.setRadius(this.markerRadius)
         },
         addressInfo () {
-            console.log('addressInfo', this.addressInfo)
             this.markerLatLng = [this.addressInfo[0].lat, this.addressInfo[0].lon]
         }
   }

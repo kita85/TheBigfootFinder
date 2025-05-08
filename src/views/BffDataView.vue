@@ -1,41 +1,32 @@
 <template lang="pug">
-//- div
-//-     p Per Year / month / day
-//-     p Per classification
-//-     p Per Location
-//-     p Per Weather pattern
-//-     p Per Time of day
-//-     p Recent Activity
-//-     p Most compelling sightings
 div.p-4
     .row 
         .col-md-12.mb-3
             DataFilters
+        .col-md-12
+            SightingTrends 
         .col-md-7
             PerWeatherChart
             PerYearChart
             PerStateChart
         .col-md
-            //- Top10Sightings
             LatestSightings
-            PerClassChart
-    .row   
-        .col-md-5
-            
-        .col-md
-            
+            WeatherTable
+            PerClassChart 
     .row
         .col-md
             TableData
 </template>
     
 <script>
+import { mapGetters } from 'vuex'
 import DataFilters from '../components/Data/DataFilters.vue'
 import PerWeatherChart from '../components/Data/PerWeatherChart.vue'
+import WeatherTable from '../components/Data/WeatherTable.vue'
 import PerClassChart from '../components/Data/PerClassChart.vue'
 import PerYearChart from '../components/Data/PerYearChart.vue'
 import PerStateChart from '../components/Data/PerStateChart.vue'
-import Top10Sightings from '../components/Data/Top10Sightings.vue'
+import SightingTrends from '../components/Data/SightingTrends.vue'
 import LatestSightings from '../components/Data/LatestSightings.vue'
 import TableData from '../components/Data/TableData.vue'
 
@@ -47,17 +38,52 @@ export default {
     PerClassChart,
     PerYearChart,
     PerStateChart,
-    Top10Sightings,
+    SightingTrends,
     LatestSightings,
-    TableData
+    TableData,
+    WeatherTable
   },
   props: {
       msg: String
+  },
+  computed: {
+    ...mapGetters({
+        sightingData: 'sightingData/filteredSightingData'
+    })
   },
   data() {
       return {
           // data here
       }
+  },
+  mounted() {
+    this.renderAllBestConditions()
+  },
+  methods: {
+    renderAllBestConditions () {
+        this.$store.commit('sightingData/renderBestConditions', 'state')
+        this.$store.commit('sightingData/renderBestConditions', 'season')
+        this.$store.commit('sightingData/renderBestConditions', 'temperature_high')
+        this.$store.commit('sightingData/renderBestConditions', 'temperature_mid')
+        this.$store.commit('sightingData/renderBestConditions', 'temperature_low')
+        this.$store.commit('sightingData/renderBestConditions', 'dew_point')
+        this.$store.commit('sightingData/renderBestConditions', 'humidity')
+        this.$store.commit('sightingData/renderBestConditions', 'cloud_cover')
+        this.$store.commit('sightingData/renderBestConditions', 'moon_phase')
+        this.$store.commit('sightingData/renderBestConditions', 'precip_intensity')
+        this.$store.commit('sightingData/renderBestConditions', 'precip_probability')
+        this.$store.commit('sightingData/renderBestConditions', 'precip_type')
+        this.$store.commit('sightingData/renderBestConditions', 'pressure')
+        this.$store.commit('sightingData/renderBestConditions', 'uv_index')
+        this.$store.commit('sightingData/renderBestConditions', 'visibility')
+        this.$store.commit('sightingData/renderBestConditions', 'wind_bearing')
+        this.$store.commit('sightingData/renderBestConditions', 'wind_speed')
+    }
+  },
+  watch: {
+    sightingData () {
+        this.renderAllBestConditions()
+    }
   }
 }
 </script>

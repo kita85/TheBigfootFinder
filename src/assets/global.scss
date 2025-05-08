@@ -1,10 +1,16 @@
 @import '~bootstrap/scss/bootstrap.scss';
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+/* GENERAL ELEMENTS */
 html, body {
-  font-family: 'Roboto', sans-serif;
-//   font-family: "Crimson Text", serif;
+    font-family: 'Roboto', sans-serif;
+    // font-family: "Crimson Text", serif;
 }
+hr {
+    color: #8a8a8a;
+}
+
+/* TEXT */
 p {
     margin-top: 0;
     // margin-bottom: 1rem;
@@ -12,9 +18,13 @@ p {
     // line-height: 120%;
     letter-spacing: -.02em;
 }
-hr {
-    color: #8a8a8a;
+.section-title {
+    font-weight: bold;
+    // font-size: 1.2rem;
+    margin-bottom: 10px;
 }
+
+/* CARDS */
 .card {
     border-radius: 0!important;
     border: 1px solid rgb(240, 240, 240)!important;
@@ -28,6 +38,8 @@ hr {
 .card-body {
     padding: 0 35px 25px 35px!important;
 }
+
+/* CHARTS */
 .chart-title {
     font-size: 18px;
     font-weight: bold;
@@ -35,14 +47,26 @@ hr {
     // font-family: "Lora", serif;
     color: #1b1c2b;
 }
+.group-by-filters span {
+    color: rgb(181, 181, 181);
+    border-bottom: 2px solid white;
+    cursor: pointer;
+    transition: 0.5s all;
+}
+.group-by-filters span.active {
+    border-bottom: 2px solid #1f77b4;
+    color: black;
+}
+.group-by-filters span:hover {
+    color: black;
+}
+
+/* BUTTONS */
 .btn-primary {
     background-color: #1f77b4;
 }
-.section-title {
-    font-weight: bold;
-    // font-size: 1.2rem;
-    margin-bottom: 10px;
-}
+
+/* FORMS */
 .form-check-input {
     height: 25px;
     width: 50px!important;
@@ -50,4 +74,12 @@ hr {
 .form-check-input:checked {
     background-color: #1f77b4;
     border-color: #1f77b4;
+}
+
+/* GRIDS */
+.fixed-width-50 {
+    max-width: 50px!important;
+}
+.fixed-width-350 {
+    max-width: 350px!important;
 }

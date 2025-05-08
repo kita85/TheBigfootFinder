@@ -11,7 +11,6 @@ div#marker-info-sidebar(:class="[openMarkerSidebar ? 'active' : '']")
                             fa(:icon="['fas', 'xmark']")
                 p.subtitle.small
                     span.color-highlight {{selectedMarkerDetails.county}}, {{selectedMarkerDetails.state}}
-                //-  {{selectedMarkerDetails.latitude}}, {{selectedMarkerDetails.longitude}}
 
         .marker-info-sidebar-content-scroll
             div.mb-4
@@ -231,7 +230,7 @@ export default {
 .marker-info-sidebar-bg {
     height: 100%;
     width: 100%;
-    background: url('../../assets/mapbg.png');
+    background: url('../../assets/images/mapbg.png');
     background-size: cover;
     box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.8);
     background-position: top left;
@@ -260,10 +259,6 @@ export default {
 }
 .fa-star {
     color: #f2c235;
-}
-.solid-bg-white div.mb-3 {
-    /* border-bottom: 1px solid #ededed; */
-    /* padding: 10px 0; */
 }
 .section-title-2 {
     color: #818181;

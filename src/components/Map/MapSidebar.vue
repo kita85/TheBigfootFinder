@@ -30,16 +30,17 @@
                 option(v-for="year in yearList" :value="year") {{year}}
             label(for='form-year') year
         div.form-floating.mt-3
-            select.form-select(v-model="selectedClass" @change="filterMap()")
+            select#form-classification.form-select(v-model="selectedClass" @change="filterMap()")
                 option(:value="null") All
                 option(value="Class A") Class A
                 option(value="Class B") Class B
                 option(value="Class C") Class C
-            label(for="") Class
+            label(for="form-classification") Class
 </template>
 
 <script>
-  
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'MapSidebar',
   emits: ['toggleSidebar', 'updateMarkerRadius', 'toggleProbability'],
@@ -47,11 +48,14 @@ export default {
   props: {
       msg: String
   },
+  computed: {
+    ...mapGetters({
+        yearList: 'sightingData/getYearList'
+    })
+  },
   data() {
       return {
-          // data here
           openSidebar: true,
-          yearList: [],
           radius: 10, // * 10,000 to make it worth it. Radius is in meters
           showProbability: true,
           selectedYear: null,
@@ -59,9 +63,7 @@ export default {
           selectedAddress: null
       }
   },
-  mounted() {
-    this.getYearList()
-  },
+  mounted() {},
   methods: {
     metersToMiles() {
         return ((this.radius * 10000 ) * 0.000621371).toFixed()
@@ -75,12 +77,6 @@ export default {
     },
     updateMarkerRadius() {
         this.$emit('updateMarkerRadius', this.radius * 10000)
-    },
-    getYearList () {
-        this.yearList = []
-        for(let i=2018; i > 1869; i--) {
-            this.yearList.push(i)
-        }
     },
     filterMap () {
         const selectedData = {year: this.selectedYear, classification: this.selectedClass}

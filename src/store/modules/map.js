@@ -16,7 +16,6 @@ const mutations = {
 
 const actions = {
     requestAddressInfo: ({commit}, payload) => {
-        // const payload = '8445 Walbrook Dr Knoxville, TN'
         try {
             return ApiDataService.get('https://nominatim.openstreetmap.org/search?q='+payload+'&format=json&limit=5')
             .then(responseData => {

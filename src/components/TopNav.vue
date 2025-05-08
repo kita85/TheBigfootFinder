@@ -2,7 +2,7 @@
 div#top-nav.p-3
     .d-flex
         .me-auto.p-0
-            img(src="../assets/bff.jpeg")
+            img(src="../assets/images/bff.jpeg")
         .social.p-0
             fa.me-3(:icon="['fab', 'facebook']")
             fa.me-3(:icon="['fab', 'instagram']")

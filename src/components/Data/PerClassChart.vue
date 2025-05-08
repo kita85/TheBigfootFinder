@@ -6,7 +6,7 @@
     .card-body
         p.mb-0 Class A reports involve clear first-hand sightings.
         p.mb-0 Class B reports involve unclear first-hand sightings.
-        P.mb-0 Class C are any second-hand reports.
+        p.mb-0 Class C are any second-hand reports.
         div(ref="plotPerClass")
 </template>
 
@@ -32,7 +32,6 @@ export default {
             type: 'pie'
         }],
         chartLayout: {
-            // title: {text: 'Class distribution'}
             legend: {
                 "orientation": "h"
             },
@@ -45,13 +44,6 @@ export default {
    this.renderChart();
  },
  methods: {
-    groupBy(arr, property) {
-        return arr.reduce(function (memo, x) {
-            if (!memo[x[property]]) { memo[x[property]] = [] }
-            memo[x[property]].push(x)
-            return memo
-        }, {})
-    },
     renderData() {
         const result = Object.groupBy(this.sightingData, e => e.classification)
 

@@ -25,9 +25,11 @@
 import { mapGetters } from 'vuex'
 import Plotly from 'plotly.js-dist'
 import moment from 'moment'
+import sortGroupedObjects from '../../mixins/sortGroupedObjects'
 
 export default {
   name: 'PerYearChart',
+  mixins: [sortGroupedObjects],
   components: {},
   props: {},
   computed: {
@@ -49,7 +51,6 @@ export default {
             type: 'scatter'
         }],
         chartLayout: {
-            // title: {text: 'Sightings Over Time'},
             legend: {"orientation": "h"},
             yaxis: {
                 zeroline: false,
@@ -72,13 +73,6 @@ export default {
    this.renderChart();
  },
  methods: {
-    groupBy(arr, property) {
-        return arr.reduce(function (memo, x) {
-            if (!memo[x[property]]) { memo[x[property]] = [] }
-            memo[x[property]].push(x)
-            return memo
-        }, {})
-    },
     updateGroupByValue (e) {
         this.groupByValue = e
         this.renderChart()
@@ -86,14 +80,12 @@ export default {
     renderData() {
         const result = Object.groupBy(this.sightingData, e => moment(e.timestamp).format(this.groupByOptions[this.groupByValue].format))
         
+        // We don't need undefined values at this time
+        delete result[null]
+        delete result['Unknown']
+            
         // Sort data
-        const ordered = Object.keys(result).sort().reduce(
-            (obj, key) => { 
-                obj[key] = result[key]
-                return obj
-            }, 
-            {}
-        )
+        const ordered = this.sortGroupedObjects(result)
 
         // Update chart axis and type
         this.chartData[0].type = this.groupByOptions[this.groupByValue].chart
@@ -106,7 +98,6 @@ export default {
 
         for (const key in ordered) {
             this.groupByValue === 'month' ? this.chartData[0].x.push(moment(key, 'M').format('MMMM')) : this.chartData[0].x.push(key)
-            // this.chartData[0].x.push(key)
             this.chartData[0].y.push(ordered[key].length)
         }
     },
@@ -124,7 +115,7 @@ export default {
 </script>
 
 <style scoped>
-.max-width-100 {
+/* .max-width-100 {
     max-width: 100px;
 }
 .max-width-175 {
@@ -136,22 +127,9 @@ export default {
     text-align: right;
     display: block;
     padding-top: 15px;
-}
+} */
 .chart {
     max-height: 300px;
-}
-.group-by-filters span {
-    color: rgb(181, 181, 181);
-    border-bottom: 2px solid white;
-    cursor: pointer;
-    transition: 0.5s all;
-}
-.group-by-filters span.active {
-    border-bottom: 2px solid #1f77b4;
-    color: black;
-}
-.group-by-filters span:hover {
-    color: black;
 }
 </style>
     
