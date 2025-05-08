@@ -3,9 +3,9 @@ div
   //- InfoBox
   TopNav
   .row.m-0
-    .col.col-md.p-0.fixed-width(:class="[openSidebar ? 'fixed-width-175' : 'fixed-width-75']")
+    .col-lg.p-0.fixed-width(:class="[openSidebar ? 'fixed-width-175' : 'fixed-width-75']")
       MainSidebar(@toggleSidebar="toggleSidebar")
-    .col.col-md.p-0
+    .col-lg.p-0
       div.router-container
         router-view
 </template>

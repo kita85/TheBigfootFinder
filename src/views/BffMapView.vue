@@ -5,13 +5,18 @@
         :openMarkerSidebar="openMarkerSidebar" 
         :selectedMarkerDetails="selectedMarkerDetails")
     .row.m-0
-        .col.col-md.p-0
+        .col-lg-4.fixed-height.show-on-mobile(:class="[!openSidebar ? 'fixed-height-50' : '']")
+            MapSidebar(
+                @toggleSidebar="toggleSidebar"
+                @toggleProbability="toggleProbability" 
+                @updateMarkerRadius="updateMarkerRadius")
+        .col-lg.p-0
             BigfootMap(
                 @toggleMarkerSidebar="toggleMarkerSidebar" 
                 @updateSelectedMarkerDetails="updateSelectedMarkerDetails" 
                 :markerRadius="markerRadius"
                 :showProbability="showProbability")
-        .col.col-md-4.fixed-width(:class="[openSidebar ? 'fixed-width-350' : 'fixed-width-50']")
+        .col-lg-4.fixed-width.hide-on-mobile(:class="[openSidebar ? 'fixed-width-350' : 'fixed-width-50']")
             MapSidebar(
                 @toggleSidebar="toggleSidebar"
                 @toggleProbability="toggleProbability" 

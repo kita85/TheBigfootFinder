@@ -1,6 +1,6 @@
 <template lang="pug">
 div#main-sidebar(:class="[openSidebar ? 'active' : '']")
-    div.nav-link(@click="toggleSidebar()")
+    div.nav-link.hide-on-mobile(@click="toggleSidebar()")
         fa(:icon="['fas', 'bars']")
 
     router-link.nav-link(to="/")

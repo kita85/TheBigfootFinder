@@ -2,28 +2,28 @@
 div DataFilters
 .row
     .col-md
-        div.form-floating
+        div.form-floating.mb-2
             select#form-year.form-select(v-model="form.year")
                 option(:value="null") All
                 option(v-for="year in yearList" :value="year") {{year}}
             label(for='form-year') year
 
     .col-md
-        div.form-floating
+        div.form-floating.mb-2
             select#form-location.form-select(v-model="form.state")
                 option(:value="null") All
                 option(v-for="location in sightingLocationList" :value="location") {{location}}
             label(for='form-location') State/Providence
 
     .col-md
-        div.form-floating
+        div.form-floating.mb-2
             select.form-select(v-model="form.classification")
                 option(:value="null") All
                 option(value="Class A") Class A
                 option(value="Class B") Class B
                 option(value="Class C") Class C
             label(for="") Class
-    .col-md-2
+    .col-md-2.mb-2
         button.btn.btn-primary.btn-submit(@click="submitForm()") Submit
 </template>
 

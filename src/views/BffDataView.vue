@@ -1,20 +1,20 @@
 <template lang="pug">
 div.p-4
     .row 
-        .col-md-12.mb-3
+        .col-lg-12.mb-3
             DataFilters
-        .col-md-12
+        .col-lg-12
             SightingTrends 
-        .col-md-7
+        .col-xl-7
             PerWeatherChart
             PerYearChart
             PerStateChart
-        .col-md
+        .col-xl
             LatestSightings
             WeatherTable
             PerClassChart 
     .row
-        .col-md
+        .col-lg
             TableData
 </template>
     

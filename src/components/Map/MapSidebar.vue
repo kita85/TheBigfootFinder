@@ -1,7 +1,11 @@
 <template lang="pug">
-    div.pt-2.ps-1.mb-3(@click="toggleSidebar()")
+    div.pt-2.ps-1.mb-3.hide-on-mobile(@click="toggleSidebar()")
         fa(:icon="['fas', 'arrow-left']" v-if="!openSidebar")
         fa(:icon="['fas', 'arrow-right']" v-if="openSidebar")
+    
+    div.pt-2.ps-1.mb-3.map-control-icon.show-on-mobile(@click="toggleSidebar()")
+        fa(:icon="['fas', 'bars']")
+        span.ms-2 Map Controls
 
     div#map-sidebar
         p.section-title Location Search
@@ -93,6 +97,12 @@ export default {
 #map-sidebar {
     margin: 10px;
     overflow: hidden;
+    transition: 1s all;
+}
+.map-control-icon {
+    font-size: 18px!important;
+    padding: 13px 10px!important;
+    cursor: pointer;
 }
 </style>
     
