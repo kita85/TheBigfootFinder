@@ -191,7 +191,7 @@ export default {
   },
   watch: {
     selectedMarkerDetails () {
-        console.log(this.selectedMarkerDetails)
+        // console.log(this.selectedMarkerDetails)
     }
   }
 }
@@ -202,7 +202,7 @@ export default {
     overflow: hidden;
     z-index: 99999;
     position: absolute;
-    height: calc(100% - 70px);
+    height: calc(100% - 40px);
     width: 375px;
     margin: 50px 10px;
     border-radius: 10px;

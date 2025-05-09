@@ -1,7 +1,5 @@
 <template lang="pug">
 div
-  //- InfoBox
-  TopNav
   .row.m-0
     .col-lg.p-0.fixed-width(:class="[openSidebar ? 'fixed-width-175' : 'fixed-width-75']")
       MainSidebar(@toggleSidebar="toggleSidebar")
@@ -11,7 +9,6 @@ div
 </template>
 
 <script>
-import TopNav from './components/TopNav.vue'
 import InfoBox from './components/InfoBox.vue'
 import BigfootMap from './components/Map/BigfootMap.vue'
 import MainSidebar from './components/MainSidebar.vue'
@@ -19,14 +16,13 @@ import MainSidebar from './components/MainSidebar.vue'
 export default {
   name: 'App',
   components: {
-    TopNav,
     InfoBox,
     BigfootMap,
     MainSidebar
   },
   data() {
     return {
-      openSidebar: false
+      openSidebar: true
     }
   },
   methods: {
