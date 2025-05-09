@@ -23,7 +23,7 @@
                 p Pressure: {{bestConditions.pressure}}
                 p UV Index: {{bestConditions.uv_index}}
                 p Visibility: {{bestConditions.visibility}} miles
-                p Wind Bearing: {{bestConditions.wind_bearing}}  {{getWindDirection(selectedMarkerDetails.wind_bearing)}}
+                p Wind Bearing: {{bestConditions.wind_bearing}}  {{getWindDirection(bestConditions.wind_bearing)}}
                 p Wind Speed: {{bestConditions.wind_speed}} mph
 
 </template>
