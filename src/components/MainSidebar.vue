@@ -33,12 +33,15 @@ div#main-sidebar(:class="[openSidebar ? 'active' : '']")
             //-     fa(:icon="['fas', 'newspaper']")
             //-     span.ms-2.small News
         .social.mt-auto
-            a(href="https://www.facebook.com/TheBigfootFinder" target='_blank')
-                fa.me-3(:icon="['fab', 'facebook']")
-            a(href="https://www.instagram.com/thebigfootfinder/" target='_blank')
-                fa.me-3(:icon="['fab', 'instagram']")
-            a(href="https://www.youtube.com/@thebigfootfinder" target='_blank')
-                fa.me-3(:icon="['fab', 'youtube']")
+            div.mb-1
+                a(href="https://www.facebook.com/TheBigfootFinder" target='_blank')
+                    fa.me-3(:icon="['fab', 'facebook']")
+            div.mb-1
+                a(href="https://www.instagram.com/thebigfootfinder/" target='_blank')
+                    fa.me-3(:icon="['fab', 'instagram']")
+            div
+                a(href="https://www.youtube.com/@thebigfootfinder" target='_blank')
+                    fa.me-3(:icon="['fab', 'youtube']")
     
 </template>
     
@@ -126,11 +129,12 @@ export default {
 }
 .social {
     margin: 10px 10px 10px 15px;
-    text-align: center;
+}
+.social div {
+    display: block;
 }
 .social a {
     color: white!important;
-    margin-bottom: 10px;
     opacity: .5;
 }
 .full-height {
