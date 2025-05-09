@@ -1,6 +1,5 @@
 <template lang="pug">
 div.p-4
-    h1 Quick Test
     .row 
         .col-lg-12.mb-3
             DataFilters
