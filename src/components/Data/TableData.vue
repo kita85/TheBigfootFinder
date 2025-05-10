@@ -3,24 +3,25 @@
     .card-header
         p.chart-title Tabular data
         hr
-    .card-body 
-      DataTable.table.table-small.table-striped.table-hover
-        thead
-          tr
-            th number
-            th title
-            th classification
-            th timestamp
-            th latitude
-            th longitude
-        tbody
-          tr(v-for="sighting in sightingData")
-            td {{ sighting.number }}
-            td {{ sighting.title }}
-            td {{ sighting.classification }}
-            td {{ sighting.timestamp }}
-            td {{ sighting.latitude }}
-            td {{ sighting.longitude }}
+    .card-body
+      .table-responsive
+        DataTable.table.table-small.table-striped.table-hover
+          thead
+            tr
+              th number
+              th title
+              th classification
+              th timestamp
+              th latitude
+              th longitude
+          tbody
+            tr(v-for="sighting in sightingData")
+              td {{ sighting.number }}
+              td {{ sighting.title }}
+              td {{ sighting.classification }}
+              td {{ sighting.timestamp }}
+              td {{ sighting.latitude }}
+              td {{ sighting.longitude }}
 </template>
 
 <script>

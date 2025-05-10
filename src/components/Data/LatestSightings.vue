@@ -4,19 +4,20 @@ div.card
     p.chart-title Latest Sighting Activity
     hr
   .card-body
-    table.table.table-small.table-hover
-      thead
-        tr
-          th Identifier
-          th Classification
-          th Timestamp
-          th State
-      tbody
-        tr(v-for="sighting in reducedData")
-          td {{ sighting.number }}
-          td {{ sighting.classification }}
-          td {{ formatDateTime(sighting.timestamp) }}
-          td {{ sighting.state }}
+    .table-responsive
+      table.table.table-small.table-hover
+        thead
+          tr
+            th Identifier
+            th Classification
+            th Timestamp
+            th State
+        tbody
+          tr(v-for="sighting in reducedData")
+            td {{ sighting.number }}
+            td {{ sighting.classification }}
+            td {{ formatDateTime(sighting.timestamp) }}
+            td {{ sighting.state }}
 </template>
 
 <script>

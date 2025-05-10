@@ -6,6 +6,7 @@
                 p.chart-title Sighting Trends
                 hr
   .card-body
+    .table-responsive
         table.table.table-small.table-striped.table-hover
           thead
             tr
