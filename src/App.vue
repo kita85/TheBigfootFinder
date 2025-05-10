@@ -9,6 +9,8 @@ div
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+import { ref } from 'vue';
 import InfoBox from './components/InfoBox.vue'
 import BigfootMap from './components/Map/BigfootMap.vue'
 import MainSidebar from './components/MainSidebar.vue'
@@ -20,16 +22,38 @@ export default {
     BigfootMap,
     MainSidebar
   },
+  computed: {
+    ...mapGetters({
+        isMobile: 'getIsMobile'
+    })
+  },
   data() {
     return {
-      openSidebar: true
+      openSidebar: true,
+      screenWidth: 0
     }
+  },
+  mounted() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize()
   },
   methods: {
     toggleSidebar (e) {
       this.openSidebar = e
+    },
+    handleResize () {
+      this.screenWidth = ref(window.innerWidth)
+      if( this.screenWidth <= 992 ) {
+        this.$store.commit('setIsMobile', true)
+      }
+      else {
+        this.$store.commit('setIsMobile', false)
+      }
     }
-  }
+  },
+  beforeUnmount() {
+    window.removeEventListener('resize', this.handleResize)
+  },
 }
 </script>
 

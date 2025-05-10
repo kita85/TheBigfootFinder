@@ -1,7 +1,7 @@
 <template lang="pug">
 InfoBox(v-if="showProbability" :msg="'Geo Message | You have a '+probability+'% of seeing a Bigfoot based on your current location.'")
 div#bigfoot-map
-    LMap(ref="map" :zoom="zoom" :center="center")
+    LMap(ref="map" :zoom="zoom" :center="center" :options="mapOptions")
         LTileLayer(url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" layer-type="base" name="OpenStreetMap")
         LMarkerClusterGroup
             LMarker(v-for="sighting in sightingData" :lat-lng="[sighting.latitude, sighting.longitude]" @click="openMarkerSidebar(sighting)")
@@ -50,6 +50,10 @@ export default {
             nearbyMarkers: [],
             randomChance: 0.0000000715, //Chances of winning the lottery
             probability: 0,
+            mapOptions: {
+                dragging: !L.Browser.mobile, 
+                tap: !L.Browser.mobile
+            },
             circleOptions: {
                 draggable: true,
                 radius: 0,
@@ -135,7 +139,7 @@ export default {
 
 <style>
 #bigfoot-map {
-    height: calc(100vh - 115px);
+    height: calc(100vh - 40px);
     width: 100%;
     padding: 0px;
     margin: 0px;

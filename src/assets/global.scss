@@ -48,6 +48,7 @@ p {
     color: #1b1c2b;
 }
 .group-by-filters span {
+    font-size: .8rem;
     color: rgb(181, 181, 181);
     border-bottom: 2px solid white;
     cursor: pointer;
@@ -56,6 +57,10 @@ p {
 .group-by-filters span.active {
     border-bottom: 2px solid #1f77b4;
     color: black;
+}
+.group-by-filters span.small:hover {
+    color: rgb(181, 181, 181);
+    cursor: default;
 }
 .group-by-filters span:hover {
     color: black;

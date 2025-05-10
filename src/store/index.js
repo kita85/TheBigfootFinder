@@ -5,13 +5,16 @@ import { map } from './modules/map'
 export const defaultState = () => {
     return {
         // data goes here
+        isMobile: false
     }
 }
 
 const state = defaultState()
 
 const mutations = {
-
+    setIsMobile (state, payload) {
+        state.isMobile = payload
+    },
 }
 
 const actions = {
@@ -19,7 +22,9 @@ const actions = {
 }
 
 const getters = {
-
+    getIsMobile (state) {
+        return state.isMobile
+    },
 }
 
 export const store = createStore({

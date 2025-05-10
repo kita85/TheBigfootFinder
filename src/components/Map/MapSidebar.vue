@@ -54,7 +54,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-        yearList: 'sightingData/getYearList'
+        yearList: 'sightingData/getYearList',
+        isMobile: 'getIsMobile'
     })
   },
   data() {
@@ -88,6 +89,17 @@ export default {
     },
     getAddressInfo () {
         this.$store.dispatch('map/requestAddressInfo', this.selectedAddress)
+    }
+  },
+  watch: {
+    isMobile () {
+        if (this.isMobile) {
+            this.openSidebar = false
+            this.$emit('toggleSidebar', this.openSidebar)
+        } else {
+            this.openSidebar = true
+            this.$emit('toggleSidebar', this.openSidebar)
+        }
     }
   }
 }
