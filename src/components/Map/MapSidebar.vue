@@ -68,7 +68,9 @@ export default {
           selectedAddress: null
       }
   },
-  mounted() {},
+  mounted() {
+    this.closeMenuOnMobile()
+  },
   methods: {
     metersToMiles() {
         return ((this.radius * 10000 ) * 0.000621371).toFixed()
@@ -89,10 +91,8 @@ export default {
     },
     getAddressInfo () {
         this.$store.dispatch('map/requestAddressInfo', this.selectedAddress)
-    }
-  },
-  watch: {
-    isMobile () {
+    },
+    closeMenuOnMobile() {
         if (this.isMobile) {
             this.openSidebar = false
             this.$emit('toggleSidebar', this.openSidebar)
@@ -100,6 +100,11 @@ export default {
             this.openSidebar = true
             this.$emit('toggleSidebar', this.openSidebar)
         }
+    }
+  },
+  watch: {
+    isMobile () {
+        this.closeMenuOnMobile()
     }
   }
 }
