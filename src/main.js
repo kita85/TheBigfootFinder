@@ -16,9 +16,9 @@ import './assets/global.scss'
 import { configure } from "vue-gtag";
 
 configure({
-  tagId: process.env.GOOGLE_ANALYTICS
+  tagId: process.env.VUE_APP_GOOGLE_ANALYTICS
 })
-
+console.log('GA', process.env.VUE_APP_GOOGLE_ANALYTICS)
 // service.setStoreRef(store)
 // service.setRouterRef(router)
 
