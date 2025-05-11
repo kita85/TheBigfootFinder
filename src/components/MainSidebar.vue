@@ -1,52 +1,45 @@
 <template lang="pug">
 div#main-sidebar(:class="[openSidebar ? 'active' : '']")
-    .d-flex.flex-column.full-height
+    .d-flex.flex-column.full-height(v-if="!isMobile")
         .nav-content
             div#logo-container
                 img.logo(src="../assets/images/BffLogoWhite.png" :class="[openSidebar ? 'active' : '']")
                 img.logoIcon(src="../assets/images/BffLogoIconWhite.png" :class="[!openSidebar ? 'active' : '']")
-
-            div.nav-link.hide-on-mobile(@click="toggleSidebar()")
+            
+            div.nav-link(@click="toggleSidebar()")
                 fa(:icon="['fas', 'bars']")
 
-            router-link.nav-link(to="/")
-                fa(:icon="['fas', 'house']")
-                span.ms-2.small Home
+            .site-navigation-links
+                router-link.nav-link(v-for="link in routerLinkList" :to="link.route")
+                    fa(:icon="link.icon")
+                    span.ms-2.small {{ link.name }}
 
-            router-link.nav-link(to="/")
-                fa(:icon="['far', 'map']")
-                span.ms-2.small Map
-
-            router-link.nav-link(to="/data")
-                fa(:icon="['fas', 'magnifying-glass-chart']")
-                span.ms-2.small Data
-
-            //- router-link.nav-link(to="/shop") 
-            //-     fa(:icon="['fas', 'cart-shopping']")
-            //-     span.ms-2.small Shop
-
-            //- router-link.nav-link(to="/events")
-            //-     fa(:icon="['far', 'calendar']")
-            //-     span.ms-2.small Events
-
-            //- router-link.nav-link(to="/news")
-            //-     fa(:icon="['fas', 'newspaper']")
-            //-     span.ms-2.small News
         .social.mt-auto
-            div.mb-1
-                a(href="https://www.facebook.com/TheBigfootFinder" target='_blank')
-                    fa.me-3(:icon="['fab', 'facebook']")
-            div.mb-1
-                a(href="https://www.instagram.com/thebigfootfinder/" target='_blank')
-                    fa.me-3(:icon="['fab', 'instagram']")
-            div
-                a(href="https://www.youtube.com/@thebigfootfinder" target='_blank')
-                    fa.me-3(:icon="['fab', 'youtube']")
+            div.mb-1(v-for="social in socialList")
+                a(:href="social.link" target='_blank')
+                    fa.me-3(:icon="social.icon")
+
+    div(v-if="isMobile")
+        .d-flex.flex-row
+            div#logo-container
+                img.logo.active(src="../assets/images/BffLogoWhite.png")
+            div.nav-link.ms-auto(@click="toggleMobileMenu()")
+                fa.p-3(:icon="['fas', 'bars']")
+            
+        .mobile-menu.mt-3.mb-3(:class="[openMobileMenu ? 'active' : '']")
+            .links
+                router-link.nav-link(v-for="link in routerLinkList" :to="link.route")
+                    fa(:icon="link.icon")
+                    span.ms-2.small {{ link.name }}
+
+            .social.mt-5
+                a(:href="social.link" target='_blank' v-for="social in socialList")
+                    fa.me-3(:icon="social.icon")
     
 </template>
     
 <script>
-
+import { mapGetters } from 'vuex'
   
 export default {
   name: 'MainSidebar',
@@ -55,15 +48,37 @@ export default {
   props: {
       msg: String
   },
+  computed: {
+    ...mapGetters({
+        isMobile: 'getIsMobile'
+    })
+  },
   data() {
       return {
-        openSidebar: true
+        openSidebar: true,
+        openMobileMenu: false,
+        routerLinkList: [
+            { name: 'Home', route: '/', icon: ['fas', 'house'] },
+            { name: 'Map', route: '/', icon: ['far', 'map'] },
+            { name: 'Data', route: '/data', icon: ['fas', 'magnifying-glass-chart'] }
+            // { name: 'Shop', route: '/shop', icon: ['fas', 'cart-shopping'] },
+            // { name: 'Events', route: '/events', icon: ['far', 'calendar'] },
+            // { name: 'News', route: '/news', icon: ['fas', 'newspaper'] },
+        ],
+        socialList: [
+            { name: 'Facebook', route: 'https://www.facebook.com/TheBigfootFinder', icon: ['fab', 'facebook'] },
+            { name: 'Instagram', route: 'https://www.instagram.com/thebigfootfinder/', icon: ['fab', 'instagram'] },
+            { name: 'YouTube', route: 'https://www.youtube.com/@thebigfootfinder', icon: ['fab', 'youtube'] }
+        ]
       }
   },
   methods: {
     toggleSidebar() {
         this.openSidebar = !this.openSidebar
         this.$emit('toggleSidebar', this.openSidebar)
+    },
+    toggleMobileMenu () {
+        this.openMobileMenu = !this.openMobileMenu
     }
   }
 }
@@ -140,6 +155,25 @@ export default {
 .full-height {
     height: calc(100vh - 40px);
     position: fixed;
+}
+.mobile-menu {
+    height: 0;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    transition: .5s all;
+}
+.mobile-menu.active {
+    height: 191px; /* not great practice */
+    margin: initial;
+    padding: initial;
+}
+.mobile-menu .links {
+    /* text-align: right; */
+    /* font-size: 2rem; */
+}
+.mobile-menu .social a {
+    font-size: 1.3rem;
 }
 </style>
     

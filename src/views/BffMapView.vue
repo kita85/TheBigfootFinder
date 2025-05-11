@@ -5,7 +5,7 @@
         :openMarkerSidebar="openMarkerSidebar" 
         :selectedMarkerDetails="selectedMarkerDetails")
     .row.m-0
-        .col-lg-4.fixed-height.show-on-mobile(:class="[!openSidebar ? 'fixed-height-50' : '']")
+        .col-lg-4.fixed-height(v-if="isMobile" :class="[!openSidebar ? 'fixed-height-50' : '']")
             MapSidebar(
                 @toggleSidebar="toggleSidebar"
                 @toggleProbability="toggleProbability" 
@@ -16,7 +16,7 @@
                 @updateSelectedMarkerDetails="updateSelectedMarkerDetails" 
                 :markerRadius="markerRadius"
                 :showProbability="showProbability")
-        .col-lg-4.fixed-width.hide-on-mobile(:class="[openSidebar ? 'fixed-width-350' : 'fixed-width-50']")
+        .col-lg-4.fixed-width(v-if="!isMobile" :class="[openSidebar ? 'fixed-width-350' : 'fixed-width-50']")
             MapSidebar(
                 @toggleSidebar="toggleSidebar"
                 @toggleProbability="toggleProbability" 
@@ -24,6 +24,7 @@
 </template>
     
 <script>
+import { mapGetters } from 'vuex'
 import MarkerInfoSidebar from '../components/Map/MarkerInfoSidebar.vue'
 import MapSidebar from '../components/Map/MapSidebar.vue'
 import BigfootMap from '../components/Map/BigfootMap.vue'
@@ -37,6 +38,11 @@ export default {
   },
   props: {
       msg: String
+  },
+  computed: {
+    ...mapGetters({
+        isMobile: 'getIsMobile'
+    })
   },
   data() {
       return {

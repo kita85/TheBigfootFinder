@@ -1,9 +1,9 @@
 <template lang="pug">
-    div.pt-2.ps-1.mb-3.hide-on-mobile(@click="toggleSidebar()")
+    div.pt-2.ps-1.mb-3(v-if="!isMobile" @click="toggleSidebar()")
         fa(:icon="['fas', 'arrow-left']" v-if="!openSidebar")
         fa(:icon="['fas', 'arrow-right']" v-if="openSidebar")
     
-    div.pt-2.ps-1.mb-3.map-control-icon.show-on-mobile(@click="toggleSidebar()")
+    div.pt-2.ps-1.mb-3.map-control-icon(v-if="isMobile" @click="toggleSidebar()")
         fa(:icon="['fas', 'bars']")
         span.ms-2 Map Controls
 

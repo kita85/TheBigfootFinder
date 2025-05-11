@@ -98,17 +98,10 @@ p {
 }
 
 /*************** RESPONSIVE ***************/
-.show-on-mobile {
-    display: none!important;
-}
-.hide-on-mobile {
-    display: block!important;
-}
+
 // 992 is bootstraps xl grid breakpoint
 @media (max-width: 992px) {
     #main-sidebar {
-        max-width: 100%;
-        height: 75px!important;
         min-height: auto!important;
     }
     .fixed-width-75 {
@@ -122,58 +115,5 @@ p {
     }
     .fixed-width-350 {
         max-width: 100%!important;
-    }
-    .nav-link {
-        display: inline-block!important;
-        font-size: 16px!important;
-        margin-bottom: 20px;
-        // margin-right: 20px!important;
-        padding: 15px 5px!important;
-    }
-    #main-sidebar .nav-link span.small{
-        font-size: 16px!important;
-        letter-spacing: 1px!important;
-    }
-    .show-on-mobile {
-        display: block!important;
-    }
-    .hide-on-mobile {
-        display: none!important;
-    }
-    #logo-container {
-        position: relative;
-        height: 50px;
-        margin-bottom: 0!important;
-        margin-left: 15px!important;
-        margin-right: 15px!important;
-        display: inline-block;
-    }
-    .logo {
-        max-width: 100px;
-        margin: 0!important;
-        opacity: 1;
-        position: static!important;
-        transition: 1 all;
-    }
-    .logoIcon {
-        display: none!important;
-    }
-    .nav-content, .social {
-        display: inline-block;
-    }
-    .social.mt-auto {
-        margin-top: 15px!important;
-        margin-left: auto!important;
-    }
-    #main-sidebar .flex-column {
-        flex-direction: row!important;
-    }
-    .full-height[data-v-36b63fe3] {
-        height: auto;
-        width: 100%!important;
-        position: static!important;
-    }
-    .social div {
-        display: inline-block!important;
     }
 }
