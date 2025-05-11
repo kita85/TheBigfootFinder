@@ -131,7 +131,9 @@ export default {
             this.$refs.circle.leafletObject.setRadius(this.markerRadius)
         },
         addressInfo () {
-            this.markerLatLng = [this.addressInfo[0].lat, this.addressInfo[0].lon]
+            if (this.addressInfo.length > 0) {
+                this.markerLatLng = [this.addressInfo[0].lat, this.addressInfo[0].lon]
+            }
         }
   }
 }

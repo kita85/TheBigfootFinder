@@ -8,10 +8,14 @@
         span.ms-2 Map Controls
 
     div#map-sidebar
-        p.section-title Location Search
+        p.section-title Location Search 
+            fa.ms-2(:icon="['fas', 'circle-info']") 
+            span.hover-text OpenStreetMaps is a community driven project and may not contain every address.
+
         div.form-floating.mt-2.mb-2
             input.form-control(type="text" placeholder="Search address" v-model="selectedAddress")
             label Address
+        p.small.form-error(v-if="addressError") Address not found
         button.btn.btn-primary(@click="getAddressInfo()") Search
 
         hr.mt-4.mb-4
@@ -55,7 +59,9 @@ export default {
   computed: {
     ...mapGetters({
         yearList: 'sightingData/getYearList',
-        isMobile: 'getIsMobile'
+        isMobile: 'getIsMobile',
+        addressInfo: 'map/getAddressInfo',
+        addressError: 'map/getAddressError'
     })
   },
   data() {
@@ -120,6 +126,31 @@ export default {
     font-size: 18px!important;
     padding: 13px 10px!important;
     cursor: pointer;
+}
+.section-title {
+    position: relative;
+    z-index: 10;
+}
+span.hover-text {
+    position: absolute;
+    padding: 10px 15px;
+    background-color: white;
+    box-shadow: 0 0 10px #b9b9b9;
+    border-radius: 5px;
+    font-weight: normal;
+    width: 300px;
+    top: 25px;
+    left: -99999px;
+}
+.section-title .fa-circle-info {
+    cursor: pointer;
+    color: #1f77b4;
+}
+.section-title .fa-circle-info:hover {
+    color: #125380;
+}
+.section-title .fa-circle-info:hover + span.hover-text {
+    left: calc(50% - 150px);
 }
 </style>
     

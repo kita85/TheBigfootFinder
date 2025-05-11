@@ -2,7 +2,8 @@ import ApiDataService from '@/services/index';
 
 export const defaultState = () => {
     return {
-        addressInfo: []
+        addressInfo: [],
+        addressError: null
     }
 }
 
@@ -11,6 +12,9 @@ const state = defaultState()
 const mutations = {
     loadAddressInfo (state, payload) {
         state.addressInfo = payload
+    },
+    loadAddressError (state, payload) {
+        state.addressError = payload
     }
 }
 
@@ -19,10 +23,15 @@ const actions = {
         try {
             return ApiDataService.get('https://nominatim.openstreetmap.org/search?q='+payload+'&format=json&limit=5')
             .then(responseData => {
-                commit('loadAddressInfo', responseData)
+                if (responseData.length === 0) {
+                    commit('loadAddressError', 'No address found')
+                } else {
+                    commit('loadAddressInfo', responseData)
+                    commit('loadAddressError', null)
+                }
             })
         } catch (error) {
-            this.error = error.message;
+            commit('loadAddressError', error)
         }
     }
 }
@@ -30,6 +39,9 @@ const actions = {
 const getters = {
     getAddressInfo (state) {
         return state.addressInfo
+    },
+    getAddressError (state) {
+        return state.addressError
     }
 }
 
