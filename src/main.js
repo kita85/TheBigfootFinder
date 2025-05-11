@@ -12,6 +12,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // SCSS
 import './assets/global.scss'
 
+// Google Analytics
+import { configure } from "vue-gtag";
+
+configure({
+  tagId: process.env.GOOGLE_ANALYTICS
+})
+
 // service.setStoreRef(store)
 // service.setRouterRef(router)
 
