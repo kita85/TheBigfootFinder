@@ -75,42 +75,50 @@ export default {
       }
   },
   mounted() {
-    this.closeMenuOnMobile()
+    // close menu on init if on mobile
+    this.toggleMobileMenuOnSubmit()
   },
   methods: {
-    metersToMiles() {
-        return ((this.radius * 10000 ) * 0.000621371).toFixed()
+    setSidebar(e) {
+        this.openSidebar = e
+        this.$emit('toggleSidebar', this.openSidebar)
     },
     toggleSidebar() {
         this.openSidebar = !this.openSidebar
         this.$emit('toggleSidebar', this.openSidebar)
     },
+    toggleMobileMenuOnSubmit() {
+        this.isMobile ? this.setSidebar(false) : this.setSidebar(true)
+    },
+    metersToMiles() {
+        return ((this.radius * 10000 ) * 0.000621371).toFixed()
+    },
     toggleProbability() {
         this.$emit('toggleProbability', this.showProbability)
+        this.toggleMobileMenuOnSubmit()
     },
     updateMarkerRadius() {
         this.$emit('updateMarkerRadius', this.radius * 10000)
+        this.toggleMobileMenuOnSubmit()
     },
     filterMap () {
         const selectedData = {year: this.selectedYear, classification: this.selectedClass}
         this.$store.commit('sightingData/filterMapData', selectedData)
+        this.toggleMobileMenuOnSubmit()
     },
     getAddressInfo () {
         this.$store.dispatch('map/requestAddressInfo', this.selectedAddress)
-    },
-    closeMenuOnMobile() {
-        if (this.isMobile) {
-            this.openSidebar = false
-            this.$emit('toggleSidebar', this.openSidebar)
-        } else {
-            this.openSidebar = true
-            this.$emit('toggleSidebar', this.openSidebar)
-        }
     }
   },
   watch: {
     isMobile () {
-        this.closeMenuOnMobile()
+        this.toggleMobileMenuOnSubmit()
+    },
+    addressInfo() {
+        // wait to make sure there was no errors, then close the menu
+        if (this.isMobile && !this.addressError) {
+            this.setSidebar(false)
+        }
     }
   }
 }

@@ -80,6 +80,11 @@ export default {
     toggleMobileMenu () {
         this.openMobileMenu = !this.openMobileMenu
     }
+  },
+  watch: {
+    $route (){
+        this.openMobileMenu = false 
+    }
   }
 }
 </script>
