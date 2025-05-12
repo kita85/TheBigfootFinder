@@ -24,10 +24,26 @@
 </template>
 
 <script setup>
-import { useHead } from '@unhead/vue'
+import { useSeoMeta } from '@unhead/vue'
 
-useHead({
-    title: 'Bigfoot Sighting Map'
+useSeoMeta({
+  // Basic SEO
+  title: 'Bigfoot Sighting Map',
+  description: 'Looking for Bigfoot? View sightings on our interactive map.',
+
+  // Open Graph
+  ogTitle: 'Bigfoot Sighting Map',
+  ogDescription: 'Looking for Bigfoot? View sightings on our interactive map.',
+  ogImage: '../assets/images/BffLogoSocial.jpeg',
+  ogUrl: window.location.href,
+  ogType: 'website',
+  ogSiteName: 'The Bigfoot Finder',
+
+  // Twitter
+  twitterTitle: 'Bigfoot Sighting Map',
+  twitterDescription: 'Looking for Bigfoot? View sightings on our interactive map.',
+  twitterImage: '../assets/images/BffLogoSocial.jpeg',
+  twitterCard: 'summary_large_image',
 })
 </script>
 
