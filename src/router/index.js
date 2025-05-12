@@ -1,4 +1,8 @@
-import { createWebHashHistory, createRouter } from 'vue-router'
+import {
+  createRouter as createVueRouter,
+  createMemoryHistory,
+  createWebHistory,
+} from "vue-router";
 
 import BffHomeView from '../views/BffHomeView.vue'
 import BffMapView from '../views/BffMapView.vue'
@@ -55,9 +59,14 @@ const routes = [
   // }
 ]
 
-const router = createRouter({
-  history: createWebHashHistory(),
-  routes,
-})
+const isServer = typeof window === "undefined";
 
-export default router
+const createRouter = () =>
+  createVueRouter({
+    history: isServer
+      ? createMemoryHistory()
+      : createWebHistory(process.env.BASE_URL),
+    routes,
+  });
+
+export default createRouter;

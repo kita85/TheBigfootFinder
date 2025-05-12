@@ -1,4 +1,4 @@
-<template lang="pug">
+<!-- <template lang="pug">
 InfoBox(v-if="showProbability" :msg="'Geo Message | You have a '+probability+'% of seeing a Bigfoot based on your current location.'")
 div#bigfoot-map
     LMap(ref="map" :zoom="zoom" :center="center" :options="mapOptions")
@@ -228,4 +228,30 @@ export default {
     line-height: 30px
 }
 </style>
+   -->
+
+   <template lang="pug">
+    div ShopList
+</template>
+
+<script>
+
   
+export default {
+  name: 'BigfootMap',
+  components: {},
+  props: {
+      msg: String
+  },
+  data() {
+      return {
+          // data here
+      }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
+    

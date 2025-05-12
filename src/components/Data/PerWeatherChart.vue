@@ -1,4 +1,4 @@
-<template lang="pug">
+<!-- <template lang="pug">
     .card
         .card-header
             .row.justify-content-md-end
@@ -111,4 +111,29 @@
     max-height: 300px;
 }
 </style>
+         -->
+
+         <template lang="pug">
+            div ShopList
+        </template>
         
+        <script>
+        
+          
+        export default {
+          name: 'PerWeatherChart',
+          components: {},
+          props: {
+              msg: String
+          },
+          data() {
+              return {
+                  // data here
+              }
+          }
+        }
+        </script>
+        
+        <style scoped>
+        
+        </style>

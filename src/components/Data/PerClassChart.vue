@@ -1,4 +1,4 @@
-<template lang="pug">
+<!-- <template lang="pug">
 .card
     .card-header
         p.chart-title Class Distribution
@@ -71,5 +71,31 @@ export default {
 
 <style scoped>
 
-</style>
+</style> -->
     
+
+<template lang="pug">
+    div ShopList
+</template>
+
+<script>
+
+  
+export default {
+  name: 'PerClassChart',
+  components: {},
+  props: {
+      msg: String
+  },
+  data() {
+      return {
+          // data here
+      }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
+      

@@ -1,4 +1,4 @@
-<template lang="pug">
+<!-- <template lang="pug">
 .card
     .card-header
         p.chart-title Sightings Per Location
@@ -72,4 +72,29 @@ export default {
 <style scoped>
 
 </style>
+     -->
+
+     <template lang="pug">
+        div ShopList
+    </template>
     
+    <script>
+    
+      
+    export default {
+      name: 'PerStateChart',
+      components: {},
+      props: {
+          msg: String
+      },
+      data() {
+          return {
+              // data here
+          }
+      }
+    }
+    </script>
+    
+    <style scoped>
+    
+    </style>

@@ -30,7 +30,7 @@ useSeoMeta({
   ogTitle: 'Bigfoot Sighting Analysis',
   ogDescription: 'Looking for Bigfoot? Use our data tool to uncover patterns and predict future encounters.',
   ogImage: '../assets/images/BffLogoSocial.jpeg',
-  ogUrl: window.location.href,
+  ogUrl: '/',
   ogType: 'website',
   ogSiteName: 'The Bigfoot Finder',
 

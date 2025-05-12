@@ -35,7 +35,7 @@ useSeoMeta({
   ogTitle: 'Bigfoot Sighting Map',
   ogDescription: 'Looking for Bigfoot? View sightings on our interactive map.',
   ogImage: '../assets/images/BffLogoSocial.jpeg',
-  ogUrl: window.location.href,
+  ogUrl: '/',
   ogType: 'website',
   ogSiteName: 'The Bigfoot Finder',
 
