@@ -2,14 +2,6 @@
     div BffNews
 </template>
 
-<script setup>
-import { useHead } from '@unhead/vue'
-
-useHead({
-    title: 'The Bigfoot Finder'
-})
-</script>
-
 <script>
 export default {
   name: 'BffNews',

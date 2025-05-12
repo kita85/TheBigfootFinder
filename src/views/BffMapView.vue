@@ -23,30 +23,6 @@
                 @updateMarkerRadius="updateMarkerRadius")
 </template>
 
-<script setup>
-import { useSeoMeta } from '@unhead/vue'
-
-useSeoMeta({
-  // Basic SEO
-  title: 'Bigfoot Sighting Map',
-  description: 'Looking for Bigfoot? View sightings on our interactive map.',
-
-  // Open Graph
-  ogTitle: 'Bigfoot Sighting Map',
-  ogDescription: 'Looking for Bigfoot? View sightings on our interactive map.',
-  ogImage: '../assets/images/BffLogoSocial.jpeg',
-  ogUrl: window.location.href,
-  ogType: 'website',
-  ogSiteName: 'The Bigfoot Finder',
-
-  // Twitter
-  twitterTitle: 'Bigfoot Sighting Map',
-  twitterDescription: 'Looking for Bigfoot? View sightings on our interactive map.',
-  twitterImage: '../assets/images/BffLogoSocial.jpeg',
-  twitterCard: 'summary_large_image',
-})
-</script>
-
 <script>
 import { mapGetters } from 'vuex'
 import MarkerInfoSidebar from '../components/Map/MarkerInfoSidebar.vue'

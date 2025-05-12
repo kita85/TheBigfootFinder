@@ -15,20 +15,6 @@ import './assets/global.scss'
 // Google Analytics
 import { configure } from "vue-gtag";
 
-// Meta tags
-import { createHead } from '@unhead/vue/client'
-const head = createHead({
-    init: [
-    {
-        title: 'The Bigfoot Finder',
-        titleTemplate: '%s | The Bigfoot Finder',
-        meta: [
-            { name: 'description', content: 'Uncover patterns in Bigfoot sightings and explore data-driven clues behind future encounters.' }
-        ]
-    },
-    ]
-})
-
 configure({
   tagId: process.env.VUE_APP_GOOGLE_ANALYTICS
 })
@@ -37,6 +23,5 @@ createApp(App)
     .use(store)
     .use(service)
     .use(router)
-    .use(head)
     .component('fa', FontAwesomeIcon)
     .mount('#app')

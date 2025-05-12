@@ -17,31 +17,6 @@ div.p-4
         .col-lg
             TableData
 </template>
-    
-<script setup>
-import { useSeoMeta } from '@unhead/vue'
-
-useSeoMeta({
-  // Basic SEO
-  title: 'Bigfoot Sighting Analysis',
-  description: 'Looking for Bigfoot? Use our data tool to uncover patterns and predict future encounters.',
-
-  // Open Graph
-  ogTitle: 'Bigfoot Sighting Analysis',
-  ogDescription: 'Looking for Bigfoot? Use our data tool to uncover patterns and predict future encounters.',
-  ogImage: '../assets/images/BffLogoSocial.jpeg',
-  ogUrl: window.location.href,
-  ogType: 'website',
-  ogSiteName: 'The Bigfoot Finder',
-
-  // Twitter
-  twitterTitle: 'Bigfoot Sighting Analysis',
-  twitterDescription: 'Looking for Bigfoot? Use our data tool to uncover patterns and predict future encounters.',
-  twitterImage: '../assets/images/BffLogoSocial.jpeg',
-  twitterCard: 'summary_large_image',
-})
-
-</script>
 
 <script>
 import { mapGetters } from 'vuex'
