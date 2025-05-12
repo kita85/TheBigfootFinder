@@ -1,7 +1,7 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/kita/public_html/thebigfootfinder
+    - export DEPLOYPATH=/home/kita/public_html/thebigfootfinder.com
     - /bin/cp -R dist/css $DEPLOYPATH
     - /bin/cp -R dist/img $DEPLOYPATH
     - /bin/cp -R dist/js $DEPLOYPATH

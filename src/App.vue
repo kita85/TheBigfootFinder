@@ -17,6 +17,15 @@ import MainSidebar from './components/MainSidebar.vue'
 
 export default {
   name: 'App',
+  metaInfo: {
+    // if no sub components specify a metaInfo.title, this title will be used
+    title: 'The Bigfoot Finder',
+    // all titles will be injected into this template
+    titleTemplate: '%s | The Bigfoot Finder',
+    meta: [
+      { name: 'description', content: 'Uncover patterns in Bigfoot sightings and explore data-driven clues behind future encounters.' }
+    ]
+  },
   components: {
     InfoBox,
     BigfootMap,

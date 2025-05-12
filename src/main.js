@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
+import VueMeta from 'vue-meta'
 import router from './router'
 import { store } from './store'
 import { service } from './services'
@@ -18,11 +19,9 @@ import { configure } from "vue-gtag";
 configure({
   tagId: process.env.VUE_APP_GOOGLE_ANALYTICS
 })
-console.log('GA', process.env.VUE_APP_GOOGLE_ANALYTICS)
-// service.setStoreRef(store)
-// service.setRouterRef(router)
 
 createApp(App)
+    .use(VueMeta)
     .use(store)
     .use(service)
     .use(router)

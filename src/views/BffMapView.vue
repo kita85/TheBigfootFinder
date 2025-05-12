@@ -31,6 +31,9 @@ import BigfootMap from '../components/Map/BigfootMap.vue'
 
 export default {
   name: 'BffMapView',
+  metaInfo: {
+    title: 'Bigfoot Sighting Map'
+  },
   components: {
     MarkerInfoSidebar,
     MapSidebar,

@@ -5,6 +5,9 @@
 <script>
 export default {
   name: 'BffEvents',
+  metaInfo: {
+    title: 'The Bigfoot Finder'
+  },
   components: {},
   props: {
       msg: String

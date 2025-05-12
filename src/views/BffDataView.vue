@@ -32,6 +32,9 @@ import TableData from '../components/Data/TableData.vue'
 
 export default {
   name: 'BffDataView',
+  metaInfo: {
+    title: 'Bigfoot Sighting Analysis'
+  },
   components: {
     DataFilters,
     PerWeatherChart,
