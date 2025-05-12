@@ -22,7 +22,15 @@
                 @toggleProbability="toggleProbability" 
                 @updateMarkerRadius="updateMarkerRadius")
 </template>
-    
+
+<script setup>
+import { useHead } from '@unhead/vue'
+
+useHead({
+    title: 'Bigfoot Sighting Map'
+})
+</script>
+
 <script>
 import { mapGetters } from 'vuex'
 import MarkerInfoSidebar from '../components/Map/MarkerInfoSidebar.vue'
@@ -31,9 +39,6 @@ import BigfootMap from '../components/Map/BigfootMap.vue'
 
 export default {
   name: 'BffMapView',
-  metaInfo: {
-    title: 'Bigfoot Sighting Map'
-  },
   components: {
     MarkerInfoSidebar,
     MapSidebar,

@@ -18,6 +18,14 @@ div.p-4
             TableData
 </template>
     
+<script setup>
+import { useHead } from '@unhead/vue'
+
+useHead({
+    title: 'Bigfoot Sighting Analysis'
+})
+</script>
+
 <script>
 import { mapGetters } from 'vuex'
 import DataFilters from '../components/Data/DataFilters.vue'
@@ -32,9 +40,6 @@ import TableData from '../components/Data/TableData.vue'
 
 export default {
   name: 'BffDataView',
-  metaInfo: {
-    title: 'Bigfoot Sighting Analysis'
-  },
   components: {
     DataFilters,
     PerWeatherChart,
