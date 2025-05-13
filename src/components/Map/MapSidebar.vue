@@ -23,7 +23,7 @@
         p BETA: Determine the probability that you will encounter a Bigfoot based on proximity of previous sightings.
         div.form-check.form-switch.mt-2.mb-2
             input.form-check-input(type="checkbox" v-model="showProbability" checked @change="toggleProbability()")
-            //- label Probability
+            label Probability
         
         div.mt-4.mb-2
             label Radius

@@ -49,7 +49,7 @@ p {
 }
 .group-by-filters span {
     font-size: .8rem;
-    color: rgb(181, 181, 181);
+    color: #727272;
     border-bottom: 2px solid white;
     cursor: pointer;
     transition: 0.5s all;
@@ -59,7 +59,7 @@ p {
     color: black;
 }
 .group-by-filters span.small:hover {
-    color: rgb(181, 181, 181);
+    color: #727272;
     cursor: default;
 }
 .group-by-filters span:hover {
@@ -100,6 +100,29 @@ p {
     max-height: 50px!important;
 }
 
+/* PAGINATION */
+button.dt-paging-button {
+    padding: 5px 15px;
+    border: 1px solid #d1d1d1;
+    position: relative;
+    text-decoration: none;
+    background-color: #fff;
+}
+button.dt-paging-button.disabled.first {
+    border-radius: 5px 0 0 5px;
+}
+button.dt-paging-button.last {
+    border-radius: 0 5px 5px 0;
+}
+span.ellipsis {
+    padding: 8px 15px 8px;
+    border: 0;
+}
+button.dt-paging-button.current {
+    background-color: #1f77b4;
+    border-color: #1f77b4;
+    color: white;
+}
 /*************** RESPONSIVE ***************/
 
 // 992 is bootstraps xl grid breakpoint

@@ -17,12 +17,12 @@ div DataFilters
 
     .col-md
         div.form-floating.mb-2
-            select.form-select(v-model="form.classification")
+            select#form-class.form-select(v-model="form.classification")
                 option(:value="null") All
                 option(value="Class A") Class A
                 option(value="Class B") Class B
                 option(value="Class C") Class C
-            label(for="") Class
+            label(for="form-class") Class
     .col-md-2.mb-2
         button.btn.btn-primary.btn-submit(@click="submitForm()") Submit
 </template>

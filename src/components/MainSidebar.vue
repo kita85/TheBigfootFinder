@@ -3,8 +3,8 @@ div#main-sidebar(:class="[openSidebar ? 'active' : '']")
     .d-flex.flex-column.full-height(v-if="!isMobile")
         .nav-content
             div#logo-container
-                img.logo(src="../assets/images/BffLogoWhite.png" :class="[openSidebar ? 'active' : '']")
-                img.logoIcon(src="../assets/images/BffLogoIconWhite.png" :class="[!openSidebar ? 'active' : '']")
+                img.logo(src="../assets/images/BffLogoWhite.png" alt="Logo" :class="[openSidebar ? 'active' : '']")
+                img.logoIcon(src="../assets/images/BffLogoIconWhite.png" alt="Logo Icon" :class="[!openSidebar ? 'active' : '']")
             
             div.nav-link(@click="toggleSidebar()")
                 fa(:icon="['fas', 'bars']")
@@ -16,13 +16,13 @@ div#main-sidebar(:class="[openSidebar ? 'active' : '']")
 
         .social.mt-auto
             div.mb-1(v-for="social in socialList")
-                a(:href="social.link" target='_blank')
+                a(:href="social.route" target='_blank')
                     fa.me-3(:icon="social.icon")
 
     div(v-if="isMobile")
         .d-flex.flex-row
             div#logo-container
-                img.logo.active(src="../assets/images/BffLogoWhite.png")
+                img.logo.active(src="../assets/images/BffLogoWhite.png" alt="Logo")
             div.nav-link.ms-auto(@click="toggleMobileMenu()")
                 fa.p-3(:icon="['fas', 'bars']")
             
@@ -33,7 +33,7 @@ div#main-sidebar(:class="[openSidebar ? 'active' : '']")
                     span.ms-2.small {{ link.name }}
 
             .social.mt-5
-                a(:href="social.link" target='_blank' v-for="social in socialList")
+                a(:href="social.route" target='_blank' v-for="social in socialList")
                     fa.me-3(:icon="social.icon")
     
 </template>
